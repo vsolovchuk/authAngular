@@ -1,0 +1,28 @@
+<div class="displayTable">
+    <div class="displayTableCell">
+        <div class="authBlock">
+            <h3>Sign In</h3>
+            <div class="formGroup">
+                <input #userName class="formControl" placeholder="Username" required type="text">
+            </div>
+            <div class="formGroup">
+                <input #userPassword class="formControl" placeholder="Password" required type="password">
+            </div>
+            <!-- SignIn from AuthService.SignIn -->
+            <div class="pt-2 formGroup">
+                <input (click)="authService.SignIn(userName.value, userPassword.value)" class="btn btn-primary" type="button"
+                       value="Log in">
+            </div>
+            <div class="formGroup">
+                <span class="or"><span class="orInner">Or</span></span>
+            </div>
+            <!-- GoogleAuth from AuthService.GoogleAuth -->
+            <div class="formGroup">
+                <button (click)="authService.GoogleAuth()" class="btn btn-primary" type="button">
+                    <i class="fab fa-google-plus-g"></i>
+                    Log in with Google
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
