@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AuthService } from "../../../../shared/services/auth.service";
 
 @Component({
@@ -7,6 +7,7 @@ import { AuthService } from "../../../../shared/services/auth.service";
   styleUrls: ['./sign-in.component.scss']
 })
 export class SignInComponent implements OnInit {
+    @Input() title: string | undefined
 
     constructor(public authService: AuthService) {
     }
