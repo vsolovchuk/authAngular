@@ -1,49 +1,30 @@
 
-<header>
-    <h3>Sign In</h3>
-    <div *ngIf="authService.userData as user" class="row">
-            <div>
-                <img alt="{{user.displayName}}"
-                     src="{{user?.photoURL || null}}">
-                <div>
-                    <h1>Hello: <strong>{{(user.displayName) ? user.displayName : 'User'}}</strong></h1>
-                    <p>User ID: <strong>{{user.uid}}</strong></p>
-                    <p>Email: <strong>{{user.email}}</strong></p>
-                    <p>Email Verified: <strong>{{user.emailVerified}}</strong></p>
-                </div>
-            </div>
-    </div>
-</header>
+<app-dashboard *ngIf="authService.userData as user"></app-dashboard>
 
-<body>
-<div>
-    <!-- SignIn -->
-    <div *ngIf="!authService.userData as user" >
-        <!-- SignIn from AuthService.SignIn -->
-        <div>
-            <input #userName class="formControl" placeholder="Username" required type="text">
-        </div>
-        <div>
-            <input #userPassword class="formControl" placeholder="Password" required type="password">
-        </div>
-        <div>
-            <input (click)="authService.SignIn(userName.value, userPassword.value)" class="btn btnPrimary" type="button"
-                   value="Log in">
-        </div>
-        <!-- GoogleAuth from AuthService.GoogleAuth -->
-        <div>
-            <div>
-                <span>Or</span>
+<div *ngIf="!authService.userData as user" class="displayTable">
+    <div class="displayTableCell">
+        <div class="authBlock">
+            <h3>Sign In</h3>
+            <div class="formGroup">
+                <input type="text" class="formControl" placeholder="Username" #userName required>
             </div>
-            <button (click)="authService.GoogleAuth()" type="button">
-                Log in with Google
-            </button>
+            <div class="formGroup">
+                <input type="password" class="formControl" placeholder="Password" #userPassword required>
+            </div>
+            <!-- SignIn from AuthService.SignIn -->
+            <div class="formGroup">
+                <input type="button" class="btn btnPrimary" value="Log in" (click)="authService.SignIn(userName.value, userPassword.value)">
+            </div>
+            <div class="formGroup">
+                <span class="or"><span class="orInner">Or</span></span>
+            </div>
+            <!-- GoogleAuth from AuthService.GoogleAuth -->
+            <div class="formGroup">
+                <button type="button" class="btn googleBtn" (click)="authService.GoogleAuth()">
+                    <i class="fab fa-google-plus-g"></i>
+                    Log in with Google
+                </button>
+            </div>
         </div>
-    </div>
-    <!-- SignOut -->
-    <div *ngIf="authService.userData as user" >
-        <input (click)="authService.SignOut()" type="button" value="Log out">
     </div>
 </div>
-
-</body>

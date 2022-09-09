@@ -9,11 +9,16 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { AuthService } from "../../shared/services/auth.service";
 import { AngularFireModule } from "@angular/fire/compat";
+import { DashboardComponent } from "./components/dashboard/dashboard.component";
+import { SignInComponent } from './components/sign-in/sign-in.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DashboardComponent,
+    SignInComponent
+
   ],
   imports: [
     BrowserModule,
